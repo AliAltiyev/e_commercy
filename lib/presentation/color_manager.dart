@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static Color charixard = HexColor._toHexColor('#FFC107');
+  static Color char = HexColor._toHexColor('#FFC107');
 }
 
 //Extension for color toHex Color
