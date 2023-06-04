@@ -1,6 +1,5 @@
+import 'package:e_commercy/src/app/my_app.dart';
 import 'package:flutter/material.dart';
-
-import 'app/my_app.dart';
 
 void main() {
   runApp(MyApp());
