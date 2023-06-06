@@ -5,14 +5,12 @@ import 'package:e_commercy/src/presentation/onboarding/onboarding_view.dart';
 import 'package:e_commercy/src/presentation/profile/profile_view.dart';
 import 'package:e_commercy/src/presentation/register/register_view.dart';
 import 'package:e_commercy/src/presentation/settings/settings_view.dart';
+import 'package:e_commercy/src/util/constants/string.dart';
 import 'package:flutter/material.dart';
-
-import '../splash/splash_view.dart';
 
 class RoutesManager {
   static const String registerPage = "/register";
   static const String loginPage = "/login";
-  static const String splashPage = "/splash";
   static const String onBoarding = "/onBoarding";
   static const String homePage = "/home";
   static const String settingPage = "/setting";
@@ -27,8 +25,6 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const RegisterView());
       case RoutesManager.loginPage:
         return MaterialPageRoute(builder: (_) => const LoginView());
-      case RoutesManager.splashPage:
-        return MaterialPageRoute(builder: (_) => const SplashView());
       case RoutesManager.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
       case RoutesManager.homePage:
@@ -52,10 +48,10 @@ class NotFoundPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('404 Page Not Found'),
+        title: const Text(StringConstants.pageNotFound),
       ),
       body: const Center(
-        child: Text('The page you are looking for does not exist.'),
+        child: Text(StringConstants.notFoundPage),
       ),
     );
   }

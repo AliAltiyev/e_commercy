@@ -12,7 +12,7 @@ class _DetailsViewState extends State<DetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBar(
-        title: Text('DetailsView'),
+        title: const Text('DetailsView'),
       ),
     );
   }
