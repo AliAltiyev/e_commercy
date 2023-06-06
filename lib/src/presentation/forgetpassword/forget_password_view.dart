@@ -12,7 +12,7 @@ class _DetailsViewState extends State<ForgetPasswordView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBar(
-        title: Text('Forget Password'),
+        title: const Text('Forget Password'),
       ),
     );
   }
