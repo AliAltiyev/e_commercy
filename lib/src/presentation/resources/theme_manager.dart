@@ -66,6 +66,7 @@ ThemeData get theme {
             fontSize: ApplicationSize.s16),
         titleSmall: StyleManager.getBoldFontStyle(
             fontWeight: FontWeightEnum.medium.getWeight,
-            fontSize: ApplicationSize.s14)),
+            fontSize: ApplicationSize.s14,
+            color: ColorManager.white)),
   );
 }
