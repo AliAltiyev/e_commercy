@@ -1,5 +1,4 @@
 import 'package:e_commercy/src/presentation/onboarding/onboarding_view.dart';
-import 'package:e_commercy/src/presentation/resources/values_manager.dart';
 import 'package:e_commercy/src/presentation/widgets/custom_card.dart';
 import 'package:e_commercy/src/util/extension/context_extension.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +21,10 @@ class OnBoardingPage extends StatelessWidget {
               fit: BoxFit.contain,
               repeat: true,
               height: context.mediaQuery.size.height / 2,
-              width: context.mediaQuery.size.width / ApplicationSize.s1_5),
+              width: context.mediaQuery.size.width),
         ),
         Text(_sliderObject.title,
+            textAlign: TextAlign.center,
             style: context.textTheme.titleLarge
                 ?.apply(color: ColorManager.primary)),
       ],
