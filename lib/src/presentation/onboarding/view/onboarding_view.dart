@@ -1,4 +1,6 @@
+import 'package:e_commercy/src/presentation/onboarding/viewmodel/onboarding_view_model.dart';
 import 'package:e_commercy/src/presentation/resources/color_manager.dart';
+import 'package:e_commercy/src/presentation/resources/routes_manager.dart';
 import 'package:e_commercy/src/presentation/resources/values_manager.dart';
 import 'package:e_commercy/src/presentation/widgets/customElevtedButton.dart';
 import 'package:e_commercy/src/util/constants/string.dart';
@@ -7,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../util/constants/image_assets.dart';
 import 'onboarding_page.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -18,9 +19,13 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  final PageController _pageController = PageController();
-  int _pageViewValue = 0;
-  late final List<SliderObject> _sliders = _getSliderObjects();
+  final OnBoardingViewModel viewModel = OnBoardingViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.init();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,32 +38,48 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             statusBarBrightness: Brightness.dark,
             statusBarIconBrightness: Brightness.dark),
       ),
-      body: Padding(
-        padding: context.paddingLow,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 7,
-              child: PageView.builder(
-                itemBuilder: (context, index) {
-                  return OnBoardingPage(
-                    sliderObject: _sliders[index],
-                  );
-                },
-                controller: _pageController,
-                itemCount: _sliders.length,
-                onPageChanged: (value) {
-                  setState(() {
-                    _pageViewValue = value;
-                  });
-                },
+      body: StreamBuilder(
+          stream: viewModel.sliders,
+          builder: (context, snapshot) {
+            if (snapshot.data == null) {
+              return Container();
+            }
+            return Padding(
+              padding: context.paddingLow,
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 7,
+                    child: _getPageViewBuilder(),
+                  ),
+                  _getSkipButton(context),
+                  _getIndicator()
+                  // Expanded(flex: 1, child: _getIndicator()),
+                ],
               ),
-            ),
-            _getSkipButton(context),
-            Expanded(flex: 1, child: _getIndicator()),
-          ],
-        ),
-      ),
+            );
+          }),
+    );
+  }
+
+  @override
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
+  }
+
+  PageView _getPageViewBuilder() {
+    return PageView.builder(
+      itemBuilder: (context, index) {
+        return OnBoardingPage(
+          sliderObject: viewModel.getSliders.toList()[index],
+        );
+      },
+      onPageChanged: (index) {
+        viewModel.onPageChanged(index);
+      },
+      controller: viewModel.pageController,
+      itemCount: viewModel.getSliders.length,
     );
   }
 
@@ -70,21 +91,24 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           padding: context.paddingLow,
           child: CustomElevatedButton(
             child: Text(
-              'Пропустить -> ',
+              StringConstants.skip,
               style: context.textTheme.titleSmall,
             ),
             backgroundColor: ColorManager.primary,
-            voidCallback: () {},
+            voidCallback: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  RoutesManager.registerPage, (route) => false);
+            },
           ),
         ),
       ],
     );
   }
 
-  _getIndicator() {
+  AnimatedSmoothIndicator _getIndicator() {
     return AnimatedSmoothIndicator(
       curve: Curves.easeInCirc,
-      count: _sliders.length,
+      count: viewModel.getSliders.length,
       axisDirection: Axis.horizontal,
       effect: SwapEffect(
           type: SwapType.yRotation,
@@ -96,26 +120,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           strokeWidth: ApplicationSize.s1_5,
           dotColor: ColorManager.primary,
           activeDotColor: ColorManager.primary),
-      activeIndex: _pageViewValue,
+      activeIndex: viewModel.currentIndex,
     );
   }
-
-  List<SliderObject> _getSliderObjects() => [
-        SliderObject(
-            title: StringConstants.onBoardingFirstSlogan,
-            image: ImageAssets.onBoardingImageOne),
-        SliderObject(
-            title: StringConstants.onBoardingSecondSlogan,
-            image: ImageAssets.onBoardingImageTwo),
-        SliderObject(
-            title: StringConstants.onBoardingThirdSlogan,
-            image: ImageAssets.onBoardingImageThree)
-      ];
-}
-
-class SliderObject {
-  final String title;
-  final String image;
-
-  SliderObject({required this.title, required this.image});
 }
