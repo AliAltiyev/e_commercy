@@ -9,4 +9,6 @@ class StringConstants {
       'Просыпайтесь свежими и полными энергии с нашими матрасами';
   static const String onBoardingThirdSlogan =
       'Наши матрасы настолько удобны, что вам никогда не захочется вставать с кровати.';
+
+  static const String skip = 'Пропустить ->';
 }
