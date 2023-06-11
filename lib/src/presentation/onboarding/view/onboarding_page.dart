@@ -3,7 +3,7 @@ import 'package:e_commercy/src/util/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../domain/model/slider.dart';
+import '../../../domain/entity/slider.dart';
 import '../../resources/color_manager.dart';
 
 class OnBoardingPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:e_commercy/src/domain/model/slider.dart';
+import 'package:e_commercy/src/domain/entity/slider.dart';
 import 'package:e_commercy/src/presentation/base/base_view_model.dart';
 import 'package:e_commercy/src/util/constants/image_assets.dart';
 import 'package:flutter/material.dart';
