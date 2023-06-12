@@ -91,7 +91,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           padding: context.paddingLow,
           child: CustomElevatedButton(
             child: Text(
-              StringConstants.skip,
+              Constants.skip,
               style: context.textTheme.titleSmall,
             ),
             backgroundColor: ColorManager.primary,
