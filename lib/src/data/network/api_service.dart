@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
-import '../response/model/response.dart';
-import '../../util/constants/string.dart';
 import 'package:retrofit/http.dart';
+
+import '../../util/constants/string.dart';
+import '../response/model/response.dart';
+
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: Constants.baseUrl)
