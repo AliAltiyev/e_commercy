@@ -1,4 +1,4 @@
-class StringConstants {
+class Constants {
   static const String pageNotFound = "page not found";
   static const String notFoundPage =
       'The page you are looking for does not exist.';
@@ -11,4 +11,6 @@ class StringConstants {
       'Наши матрасы настолько удобны, что вам никогда не захочется вставать с кровати.';
 
   static const String skip = 'Пропустить ->';
+
+  static const baseUrl = 'https://innowise.mocklab.io/';
 }

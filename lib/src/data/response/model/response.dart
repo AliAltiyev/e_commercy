@@ -6,26 +6,26 @@ part 'response.g.dart';
 
 @JsonSerializable()
 class BaseResponceModel {
-  @JsonKey(defaultValue: 'status')
+  @JsonKey(name: 'status')
   int? statusCode;
-  @JsonKey(defaultValue: 'message')
+  @JsonKey(name: 'message')
   String? message;
-  BaseResponceModel({
+  BaseResponceModel(
     this.statusCode,
     this.message,
-  });
+  );
 }
 
 @JsonSerializable()
 class CustomerModel {
-  @JsonKey(defaultValue: 'name')
+  @JsonKey(name: 'name')
   String? name;
-  @JsonKey(defaultValue: 'id')
+  @JsonKey(name: 'id')
   int? id;
-  @JsonKey(defaultValue: 'netifications')
+  @JsonKey(name: 'netifications')
   int? notifications;
 
-  CustomerModel({required this.name, required this.id});
+  CustomerModel(this.name, this.id);
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) =>
       _$CustomerModelFromJson(json);
@@ -35,11 +35,11 @@ class CustomerModel {
 
 @JsonSerializable()
 class ContactsModel {
-  @JsonKey(defaultValue: 'email')
+  @JsonKey(name: 'email')
   String? email;
-  @JsonKey(defaultValue: 'phoneNunmber')
+  @JsonKey(name: 'phoneNunmber')
   String? phoneNumber;
-  ContactsModel({required this.email, required this.phoneNumber});
+  ContactsModel(this.email, this.phoneNumber);
 
   factory ContactsModel.fromJson(Map<String, dynamic> json) =>
       _$ContactsModelFromJson(json);
@@ -49,15 +49,17 @@ class ContactsModel {
 
 @JsonSerializable()
 class AuthenticationModel extends BaseResponceModel {
-  @JsonKey(defaultValue: 'customer')
+  @JsonKey(name: 'customer')
   CustomerModel? customerModel;
-  @JsonKey(defaultValue: 'constacts')
+  @JsonKey(name: 'constacts')
   ContactsModel? contactsModel;
 
-  AuthenticationModel({
-    required this.customerModel,
-    required this.contactsModel,
-  });
+  AuthenticationModel(
+    super.statusCode,
+    super.message,
+    this.customerModel,
+    this.contactsModel,
+  );
 
   factory AuthenticationModel.fromJson(Map<String, dynamic> json) =>
       _$AuthenticationModelFromJson(json);

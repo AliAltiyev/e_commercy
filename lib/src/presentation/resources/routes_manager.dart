@@ -1,11 +1,11 @@
-import 'package:e_commercy/src/presentation/details/deails_view.dart';
-import 'package:e_commercy/src/presentation/home/home_view.dart';
-import 'package:e_commercy/src/presentation/login/login_view.dart';
-import 'package:e_commercy/src/presentation/onboarding/view/onboarding_view.dart';
-import 'package:e_commercy/src/presentation/profile/profile_view.dart';
-import 'package:e_commercy/src/presentation/register/register_view.dart';
-import 'package:e_commercy/src/presentation/settings/settings_view.dart';
-import 'package:e_commercy/src/util/constants/string.dart';
+import '../details/deails_view.dart';
+import '../home/home_view.dart';
+import '../login/login_view.dart';
+import '../onboarding/view/onboarding_view.dart';
+import '../profile/profile_view.dart';
+import '../register/register_view.dart';
+import '../settings/settings_view.dart';
+import '../../util/constants/string.dart';
 import 'package:flutter/material.dart';
 
 class RoutesManager {
@@ -48,10 +48,10 @@ class NotFoundPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(StringConstants.pageNotFound),
+        title: const Text(Constants.pageNotFound),
       ),
       body: const Center(
-        child: Text(StringConstants.notFoundPage),
+        child: Text(Constants.notFoundPage),
       ),
     );
   }

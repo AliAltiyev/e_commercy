@@ -36,19 +36,22 @@ dependencies:
   lottie: ^2.4.0
   #Page indicator
   smooth_page_indicator: ^1.1.0
+  #Base
   json_annotation: ^4.8.1
-  dio: ^5.2.1
-  retrofit: ^4.0.1
-  retrofit_generator: ^7.0.1
-  analyzer: ^5.13.0
+  #Network
+  dio: any 
+  retrofit: '>=4.0.0 <5.0.0'
+  logger: any #for logging purpose
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_launcher_icons: "^0.13.1"
-  build_runner: ^2.4.5
-  json_serializable: ^6.7.0
+  retrofit_generator: '>=5.0.0 <6.0.0'
+  build_runner: '>=2.3.0 <4.0.0' 
+  json_serializable: any
 
 flutter_launcher_icons:
   android: "launcher_icon"
