@@ -25,7 +25,8 @@ class CustomerModel {
   @JsonKey(name: 'netifications')
   int? notifications;
 
-  CustomerModel(this.name, this.id);
+  CustomerModel(
+      {required this.name, required this.id, required this.notifications});
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) =>
       _$CustomerModelFromJson(json);
@@ -54,12 +55,8 @@ class AuthenticationModel extends BaseResponceModel {
   @JsonKey(name: 'constacts')
   ContactsModel? contactsModel;
 
-  AuthenticationModel(
-    super.statusCode,
-    super.message,
-    this.customerModel,
-    this.contactsModel,
-  );
+  AuthenticationModel(this.customerModel, this.contactsModel,
+      [super.statusCode, super.message]);
 
   factory AuthenticationModel.fromJson(Map<String, dynamic> json) =>
       _$AuthenticationModelFromJson(json);
