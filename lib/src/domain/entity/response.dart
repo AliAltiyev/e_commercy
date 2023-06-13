@@ -35,13 +35,13 @@ class ContactsEntity extends Equatable {
 }
 
 class AuthenticationEntity extends Equatable {
-  final CustomerEntity customerEntity;
-  final ContactsEntity contactsEntity;
+  final CustomerEntity? customerEntity;
+  final ContactsEntity? contactsEntity;
   AuthenticationEntity({
     required this.customerEntity,
     required this.contactsEntity,
   });
 
   @override
-  List<Object> get props => [customerEntity, contactsEntity];
+  List<Object?> get props => [customerEntity, contactsEntity];
 }
