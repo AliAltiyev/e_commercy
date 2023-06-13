@@ -1,9 +1,9 @@
 import '../../network/api_service.dart';
 import '../../request/request_model.dart';
 import '../../response/model/response.dart';
-import 'repository.dart';
+import 'remote_data_source.dart';
 
-class RemoteRepositoryImpl extends RemoteRepository {
+class RemoteRepositoryImpl extends RemoteDataSource {
   final ApiService _service;
 
   RemoteRepositoryImpl({required ApiService service}) : _service = service;

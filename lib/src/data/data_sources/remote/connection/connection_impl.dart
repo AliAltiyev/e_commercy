@@ -10,6 +10,6 @@ final class ConnectionImpl implements Connection {
 
   @override
   Future<ConnectivityResult> isConnected() async {
-    return _connectivity.checkConnectivity();
+    return  await  _connectivity.checkConnectivity();
   }
 }
