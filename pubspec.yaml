@@ -25,6 +25,7 @@ dependencies:
   logger: any #for logging purpose
   #Functional programming
   dartz: ^0.10.1
+  connectivity_plus: ^4.0.1
 
 dev_dependencies:
   flutter_test:
