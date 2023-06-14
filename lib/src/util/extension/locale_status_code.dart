@@ -19,4 +19,23 @@ extension LocaleStatusCodeEx on LocaleStatusCode {
         return -7;
     }
   }
+
+  String get getStatusMessage {
+    switch (this) {
+      case LocaleStatusCode.UNKNOWN:
+        return 'Unknown';
+      case LocaleStatusCode.CACHE_ERROR:
+        return 'Cache error';
+      case LocaleStatusCode.CANCEL:
+        return 'Cancelled';
+      case LocaleStatusCode.CENNECT_TIMEOUT:
+        return 'connection timeout';
+      case LocaleStatusCode.NO_INTERNET_CONNECTION:
+        return 'No connection';
+      case LocaleStatusCode.RECIVETIMEOUT:
+        return 'Recieved timeout';
+      case LocaleStatusCode.SEND_TIMEOUT:
+        return 'Sending timeout';
+    }
+  }
 }
